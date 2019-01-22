@@ -78,7 +78,9 @@ export default {
       .then(response => {
         let unfilteredData = response.data
         var q = this.query
-        this.rooms = unfilteredData.filter(function (room) { if (room.room_name.includes(q) === true) { return room } })
+        console.log(unfilteredData)
+        console.log(q)
+        this.rooms = unfilteredData.filter(function (room) { if (room.room_name === q) { return room } })
       })
       .catch(e => {
         this.errors.push(e)
@@ -117,6 +119,7 @@ export default {
         name: 'SearchRoom',
         params: { query: this.query }
       })
+      this.$router.go()
     }
   }
 }
