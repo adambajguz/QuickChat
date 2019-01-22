@@ -16,6 +16,10 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
 
+            <b-nav-form>
+              <b-form-input size="sm" class="mr-sm-2" v-model.trim="query" type="text" placeholder="Search"/>
+              <b-button size="sm" variant="danger" class="my-2 my-sm-0" type="submit">Search</b-button>
+            </b-nav-form>
           </b-navbar-nav>
 
         </b-collapse>
@@ -49,15 +53,20 @@ export default {
       fields: {
         room_name: { label: 'Room Name', sortable: true, 'class': 'text-center' },
         room_description: { label: 'Room Description', sortable: false, 'class': 'text-justify' },
-        room_category: { label: 'Room Category', sortable: true, 'class': 'text-center' },
         highlighted_room: { label: 'Highlighted room', sortable: true },
         created_date: { label: 'Created Date', sortable: true },
         actions: { label: 'Action', 'class': 'text-center' }
       },
+      query: this.$route.params.query,
       rooms: [],
       errors: [],
       items: [{
         text: 'Chat room list',
+        href: '#',
+        active: true
+      },
+      {
+        text: 'Search room',
         href: '#',
         active: false
       }]
@@ -66,7 +75,9 @@ export default {
   created () {
     axios.get(`http://localhost:3000/api/room`)
       .then(response => {
-        this.rooms = response.data
+        let unfilteredData = response.data
+        var q = this.query
+        this.rooms = unfilteredData.filter(function (room) { if (room.room_name.includes(q) === true) { return room } })
       })
       .catch(e => {
         this.errors.push(e)

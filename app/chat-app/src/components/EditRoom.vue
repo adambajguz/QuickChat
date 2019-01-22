@@ -10,6 +10,7 @@
 
           <b-navbar-nav>
             <b-nav-item href="#/">Chat room list</b-nav-item>
+            <b-nav-item href="#/add-room">Add Chat Room</b-nav-item>
             <b-nav-item href="#/about">About</b-nav-item>
           </b-navbar-nav>
 
@@ -53,7 +54,7 @@
           :label-cols="4"
           breakpoint="md"
           label="Category:">
-          <b-form-select id="room_category" class="mb-3">
+          <b-form-select id="room_category" v-model="room.room_category" class="mb-3">
             <template slot="first">
               <!-- this slot appears above the options from 'options' prop -->
               <option value="Undefined" disabled>-- Please select an option --</option>
@@ -65,8 +66,7 @@
           </b-form-select>
         </b-form-group>
 
-
-        <b-button type="submit" variant="primary">Add</b-button>
+        <b-button type="submit" variant="primary">Save</b-button>
       </b-form>
     </b-col>
     <b-col align-self="end">&nbsp;</b-col>
@@ -78,7 +78,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'AddRoom',
+  name: 'EditRoom',
   data () {
     return {
       room: {},
@@ -88,16 +88,25 @@ export default {
         active: false
       },
       {
-        text: 'Add room',
+        text: 'Edit room',
         href: '#/',
         active: true
       }]
     }
   },
+  created () {
+    axios.get(`http://localhost:3000/api/room/` + this.$route.params.id)
+      .then(response => {
+        this.room = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      axios.post(`http://localhost:3000/api/room`, this.room)
+      axios.put(`http://localhost:3000/api/room/` + this.$route.params.id, this.room)
         .then(response => {
           this.$router.push({
             name: 'RoomList'

@@ -1,13 +1,32 @@
 <template>
   <b-row>
+     <b-col cols="12">
+      <b-navbar toggleable="md" type="light" variant="danger">
+        <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+        <b-navbar-brand href="#">QuickChat</b-navbar-brand>
+
+        <b-collapse is-nav id="nav_collapse">
+
+          <b-navbar-nav>
+            <b-nav-item href="#/">Chat room list</b-nav-item>
+            <b-nav-item href="#/add-room">Add Chat Room</b-nav-item>
+            <b-nav-item href="#/about">About</b-nav-item>
+          </b-navbar-nav>
+
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item href="#" @click.stop="logout()" >Logout</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+      <b-breadcrumb :items="items"/>
+    </b-col>
     <b-col cols="12">
-      <h2>
-        Chat Room - <b-btn size="sm" @click.stop="logout()">Logout</b-btn>
-      </h2>
       <b-list-group class="panel-body" v-chat-scroll>
         <b-list-group-item v-for="(item, index) in chats" :key="index" class="chat">
           <div class="left clearfix" v-if="item.nickname === nickname">
-            <b-img left src="http://placehold.it/50/55C1E7/fff&text=ME" rounded="circle" width="75" height="75" alt="img" class="m-1" />
+            <b-img left src="http://placehold.it/50/55C1E7/fff&text=ME" rounded="circle" width="45" height="45" alt="img" class="m-1" />
             <div class="chat-body clearfix">
               <div class="header">
                 <strong class="primary-font">{{ item.nickname }}</strong> <small class="pull-right text-muted">
@@ -17,7 +36,7 @@
             </div>
           </div>
           <div class="right clearfix" v-else>
-            <b-img right src="http://placehold.it/50/55C1E7/fff&text=U" rounded="circle" width="75" height="75" alt="img" class="m-1" />
+            <b-img right src="http://placehold.it/50/55C1E7/fff&text=U" rounded="circle" width="45" height="45" alt="img" class="m-1" />
             <div class="chat-body clearfix">
               <div class="header">
                 <strong class="primary-font">{{ item.nickname }}</strong> <small class="pull-right text-muted">
@@ -61,7 +80,17 @@ export default {
       errors: [],
       nickname: this.$route.params.nickname,
       chat: {},
-      socket: io('http://localhost:4000')
+      socket: io('http://localhost:4000'),
+      items: [{
+        text: 'Chat room list',
+        href: '#/',
+        active: false
+      },
+      {
+        text: 'Chat room',
+        href: '#/',
+        active: true
+      }]
     }
   },
   created () {
