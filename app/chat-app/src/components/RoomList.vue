@@ -15,7 +15,10 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-
+            <b-nav-form @submit="onSubmit">
+              <b-form-input size="sm" class="mr-sm-2" v-model.trim="query" type="text" placeholder="Search"/>
+              <b-button size="sm" variant="danger" class="my-2 my-sm-0" type="submit">Search</b-button>
+            </b-nav-form>
           </b-navbar-nav>
 
         </b-collapse>
@@ -55,6 +58,7 @@ export default {
         actions: { label: 'Action', 'class': 'text-center' }
       },
       rooms: [],
+      query: '',
       errors: [],
       items: [{
         text: 'Chat room list',
@@ -98,6 +102,13 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
+    },
+    onSubmit (evt) {
+      evt.preventDefault()
+      this.$router.push({
+        name: 'SearchRoom',
+        params: { query: this.query }
+      })
     }
   }
 }
