@@ -1,18 +1,18 @@
 # ToDoList
 
-Celem projektu jest stworzenie aplikacji typu SPA (single page application). Backend stanowi serwer RESTowy, udostêpniaj¹cy dane w postaci JSON (mo¿na wykorzystaæ json-server). Klient dzia³aj¹cy w przegl¹darce komunikuje siê z nim przy pomocy AJAX. Dozwolone (a nawet zalecane) jest korzystanie z javascriptowych bibliotek i frameworków (np. Angular, React, Vue, Bakcbone, Knockout, Ember).
+Celem projektu jest stworzenie aplikacji typu SPA (single page application). Backend stanowi serwer RESTowy, udostÄ™pniajÄ…cy dane w postaci JSON (moÅ¼na wykorzystaÄ‡ json-server). Klient dziaÅ‚ajÄ…cy w przeglÄ…darce komunikuje siÄ™ z nim przy pomocy AJAX. Dozwolone (a nawet zalecane) jest korzystanie z javascriptowych bibliotek i frameworkÃ³w (np. Angular, React, Vue, Bakcbone, Knockout, Ember).
 
-Aplikacja powinna pozwalaæ na przegl¹danie, dodawanie, usuwanie oraz edycjê danych. Rodzaj tych danych nale¿y okreœliæ samemu, trzymaj¹c siê ogólnych wytycznych (liczby w nawiasach oznaczaj¹ punktacjê, maksymalnie mo¿na zdobyæ za projekt 10 punktów):
+Aplikacja powinna pozwalaÄ‡ na przeglÄ…danie, dodawanie, usuwanie oraz edycjÄ™ danych. Rodzaj tych danych naleÅ¼y okreÅ›liÄ‡ samemu, trzymajÄ…c siÄ™ ogÃ³lnych wytycznych (liczby w nawiasach oznaczajÄ… punktacjÄ™, maksymalnie moÅ¼na zdobyÄ‡ za projekt 10 punktÃ³w):
 
-Obowi¹zkowa podstawa >(3): CRUD do pojedynczej tabeli (np. ksi¹¿ki, pracownicy, zakupy, piosenki), jej rekordy powinny mieæ co najmniej 5 pól (u¿yj paru ró¿nych typów, np. tekst, liczba, data)
->(+1) - przynajmniej dwie tabele po³¹czone relacj¹ jeden-do-wielu (np. autor-ksi¹¿ki, rejon-pracownicy, zamówienie-produkty)
-(dodatkowo +1) - jeœli w powy¿szym wyst¹pi relacja wiele-do-wielu (np. ksi¹¿ka mo¿e mieæ wielu autorów, pracownik mo¿e byæ przypisany do wielu rejonów)
->(+1) - u¿ytkownik ma mo¿liwoœæ sortowania (wg. dwóch czy trzech kryteriów)
-(+1) - u¿ytkownik ma mo¿liwoœæ wyszukiwania/filtrowania danych (np. "poka¿ ksi¹¿ki o tytule zaczynajacym siê od ...", "poka¿ wszystkie ksi¹¿ki danego autora")
->(+1) - zaimplementowano poprawnie dzia³aj¹cy routing po stronie klienta
->(+1) - bardziej z³o¿ona ni¿ sam CRUD logika, pasuj¹ca do tematu projektu
->(+1) - wysoki user experience (wygoda, atrakcyjnoœæ, obecnoœæ grafik i animacji, responsywnoœæ)
-(+1) - wszelkie inne sensowne i nietrywialne dodatki wzbogacaj¹ce aplikacjê
+1. ObowiÄ…zkowa podstawa =>(3): CRUD do pojedynczej tabeli (np. ksiÄ…Å¼ki, pracownicy, zakupy, piosenki), jej rekordy powinny mieÄ‡ co najmniej 5 pÃ³l (uÅ¼yj paru rÃ³Å¼nych typÃ³w, np. tekst, liczba, data)
+2. =>(+1) - przynajmniej dwie tabele poÅ‚Ä…czone relacjÄ… jeden-do-wielu (np. autor-ksiÄ…Å¼ki, rejon-pracownicy, zamÃ³wienie-produkty)
+3. (dodatkowo +1) - jeÅ›li w powyÅ¼szym wystÄ…pi relacja wiele-do-wielu (np. ksiÄ…Å¼ka moÅ¼e mieÄ‡ wielu autorÃ³w, pracownik moÅ¼e byÄ‡ przypisany do wielu rejonÃ³w)
+4. => (+1) - uÅ¼ytkownik ma moÅ¼liwoÅ›Ä‡ sortowania (wg. dwÃ³ch czy trzech kryteriÃ³w)5. 
+5. (+1) - uÅ¼ytkownik ma moÅ¼liwoÅ›Ä‡ wyszukiwania/filtrowania danych (np. "pokaÅ¼ ksiÄ…Å¼ki o tytule zaczynajacym siÄ™ od ...", "pokaÅ¼ wszystkie ksiÄ…Å¼ki danego autora")
+6. =>(+1) - zaimplementowano poprawnie dziaÅ‚ajÄ…cy routing po stronie klienta
+7. =>(+1) - bardziej zÅ‚oÅ¼ona niÅ¼ sam CRUD logika, pasujÄ…ca do tematu projektu
+8. =>(+1) - wysoki user experience (wygoda, atrakcyjnoÅ›Ä‡, obecnoÅ›Ä‡ grafik i animacji, responsywnoÅ›Ä‡)
+9. (+1) - wszelkie inne sensowne i nietrywialne dodatki wzbogacajÄ…ce aplikacjÄ™
 
 
 
