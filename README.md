@@ -13,3 +13,7 @@ Obowi¹zkowa podstawa >(3): CRUD do pojedynczej tabeli (np. ksi¹¿ki, pracownicy, 
 >(+1) - bardziej z³o¿ona ni¿ sam CRUD logika, pasuj¹ca do tematu projektu
 >(+1) - wysoki user experience (wygoda, atrakcyjnoœæ, obecnoœæ grafik i animacji, responsywnoœæ)
 (+1) - wszelkie inne sensowne i nietrywialne dodatki wzbogacaj¹ce aplikacjê
+
+
+
+https://github.com/didinj/mevn-vue2-chat-app-example
