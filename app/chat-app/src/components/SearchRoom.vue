@@ -1,6 +1,6 @@
 <template>
-  <b-row>
-    <b-col cols="12">
+  <b-row class="justify-content-center">
+    <b-col cols="12" class="mb-4">
       <b-navbar toggleable="md" type="light" variant="danger">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -25,6 +25,8 @@
 
         </b-collapse>
       </b-navbar>
+    </b-col>
+    <b-col cols="8">
       <b-breadcrumb :items="items"/>
 
       <b-table striped hover :items="rooms" :fields="fields">
@@ -78,8 +80,6 @@ export default {
       .then(response => {
         let unfilteredData = response.data
         var q = this.query
-        console.log(unfilteredData)
-        console.log(q)
         this.rooms = unfilteredData.filter(function (room) { if (room.room_name === q) { return room } })
       })
       .catch(e => {
@@ -88,7 +88,6 @@ export default {
   },
   methods: {
     join (id) {
-      console.log(id)
       this.$router.push({
         name: 'JoinRoom',
         params: { id: id }
@@ -96,7 +95,6 @@ export default {
     },
 
     edit (id) {
-      console.log(id)
       this.$router.push({
         name: 'EditRoom',
         params: { id: id }
@@ -104,7 +102,6 @@ export default {
     },
 
     remove (id) {
-      console.log(id)
       axios.delete(`http://localhost:3000/api/room/` + id)
         .then(response => {
           this.$router.go()

@@ -1,6 +1,6 @@
 <template>
-  <b-row>
-    <b-col cols="12">
+  <b-row class="justify-content-center">
+    <b-col cols="12" class="mb-4">
       <b-navbar toggleable="md" type="light" variant="danger">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -21,6 +21,8 @@
 
         </b-collapse>
       </b-navbar>
+    </b-col>
+    <b-col cols="6">
       <b-breadcrumb :items="items"/>
 
       <b-jumbotron bg-variant="light" text-variant="dark" border-variant="info">

@@ -1,6 +1,6 @@
 <template>
-  <b-row>
-     <b-col cols="12">
+  <b-row class="justify-content-center">
+     <b-col cols="12" class="mb-4">
       <b-navbar toggleable="md" type="light" variant="danger">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -20,23 +20,21 @@
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
-      <b-breadcrumb :items="items"/>
     </b-col>
-    <b-col cols="12">
+    <b-col cols="6">
+      <b-breadcrumb :items="items"/>
       <b-list-group class="panel-body" v-chat-scroll>
         <b-list-group-item v-for="(item, index) in chats" :key="index" class="chat">
           <div class="left clearfix" v-if="item.nickname === nickname">
-            <b-img left src="http://placehold.it/50/55C1E7/fff&text=ME" rounded="circle" width="45" height="45" alt="img" class="m-1" />
             <div class="chat-body clearfix">
               <div class="header">
-                <strong class="primary-font">{{ item.nickname }}</strong> <small class="pull-right text-muted">
+                <strong class="primary-font">{{ item.nickname }}</strong>{{ item.color }} <small class="pull-right text-muted">
                 <span class="glyphicon glyphicon-time"></span>{{ item.created_date }}</small>
               </div>
               <p>{{ item.message }}</p>
             </div>
           </div>
           <div class="right clearfix" v-else>
-            <b-img right src="http://placehold.it/50/55C1E7/fff&text=U" rounded="circle" width="45" height="45" alt="img" class="m-1" />
             <div class="chat-body clearfix">
               <div class="header">
                 <strong class="primary-font">{{ item.nickname }}</strong> <small class="pull-right text-muted">
@@ -55,6 +53,24 @@
       <b-form @submit="onSubmit" class="chat-form">
         <b-input-group prepend="Message">
           <b-form-input id="message" :state="state" v-model.trim="chat.message"></b-form-input>
+
+          <b-form-group id="fieldsetHorizontal"
+            horizontal
+            :label-cols="4"
+            breakpoint="md"
+            label="Category:">
+            <b-form-select id="room_category" v-model="chat.color" class="mb-3">
+              <template slot="first">
+                <!-- this slot appears above the options from 'options' prop -->
+                <option value="0" disabled>-- Please select an option --</option>
+              </template>
+              <!-- these options will appear after the ones from 'options' prop -->
+              <option value="1">General</option>
+              <option value="2">Art</option>
+              <option value="3">Games</option>
+            </b-form-select>
+          </b-form-group>
+
           <b-input-group-append>
             <b-btn type="submit" variant="info">Send</b-btn>
           </b-input-group-append>
@@ -97,6 +113,7 @@ export default {
     axios.get(`http://localhost:3000/api/chat/` + this.$route.params.id)
       .then(response => {
         this.chats = response.data
+        console.log(response.data)
       })
       .catch(e => {
         this.errors.push(e)
@@ -110,7 +127,7 @@ export default {
   },
   methods: {
     logout () {
-      this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, message: this.chat.nickname + ' left this room', created_date: new Date() })
+      this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, color: 111111, message: this.chat.nickname + ' left this room', created_date: new Date() })
       this.$router.push({
         name: 'RoomList'
       })

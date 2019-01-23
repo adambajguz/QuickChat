@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col cols="12">
+    <b-col cols="12" class="mb-4">
       <b-navbar toggleable="md" type="light" variant="danger">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -21,10 +21,10 @@
 
         </b-collapse>
       </b-navbar>
-      <b-breadcrumb :items="items"/>
     </b-col>
     <b-col align-self="start">&nbsp;</b-col>
     <b-col cols="6" align-self="center">
+      <b-breadcrumb :items="items"/>
       <b-form @submit="onSubmit">
         <b-form-group id="fieldsetHorizontal"
                   horizontal
