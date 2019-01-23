@@ -16,7 +16,7 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#" @click.stop="logout()" >Logout</b-nav-item>
+            <b-nav-item @click.stop="logout()" >Logout</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -34,10 +34,10 @@
               <div v-if="item.color === 0">
                 <p>{{ item.message }}</p>
               </div>
-              <div v-if="item.color === 1">
+              <div v-else-if="item.color === 1">
                 <p class="font-weight-bold text-monospace" text-variant="success">{{ item.message }}</p>
               </div>
-              <div v-if="item.color === 2">
+              <div v-else-if="item.color === 2">
                 <p class="font-weight-bold font-italic text-monospace" text-variant="danger">{{ item.message }}</p>
               </div>
             </div>
@@ -51,10 +51,10 @@
               <div v-if="item.color === 0">
                 <p>{{ item.message }}</p>
               </div>
-              <div v-if="item.color === 1">
+              <div v-else-if="item.color === 1">
                 <p class="font-weight-bold text-monospace" text-variant="success">{{ item.message }}</p>
               </div>
-              <div v-if="item.color === 2">
+              <div v-else-if="item.color === 2">
                 <p class="font-weight-bold font-italic text-monospace" text-variant="danger">{{ item.message }}</p>
               </div>
             </div>
@@ -70,27 +70,9 @@
         <b-input-group prepend="Message">
           <b-form-input id="message" :state="state" v-model.trim="chat.message"></b-form-input>
           <b-input-group-append>
-            <b-btn type="submit" variant="info">Send</b-btn>
+            <b-btn type="submit" variant="outline-success">Send</b-btn>
           </b-input-group-append>
         </b-input-group>
-
-        <b-form-group id="fieldsetHorizontal"
-          horizontal
-          :label-cols="4"
-          breakpoint="md"
-          label="Category:">
-          <b-form-select id="room_category" v-model="chat.color" class="mb-3">
-            <template slot="first">
-              <!-- this slot appears above the options from 'options' prop -->
-              <option value="0" disabled>-- Please select an option --</option>
-            </template>
-            <!-- these options will appear after the ones from 'options' prop -->
-            <option value="1">General</option>
-            <option value="2">Art</option>
-            <option value="3">Games</option>
-          </b-form-select>
-        </b-form-group>
-
       </b-form>
     </b-col>
   </b-row>
@@ -143,7 +125,7 @@ export default {
   },
   methods: {
     logout () {
-      this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, color: 2, message: this.chat.nickname + ' left this room', created_date: new Date() })
+      this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, message: this.chat.nickname + ' left this room', color: 2, created_date: new Date() })
       this.$router.push({
         name: 'RoomList'
       })
