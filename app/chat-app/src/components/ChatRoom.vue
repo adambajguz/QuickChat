@@ -16,7 +16,7 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item @click.stop="logout()" >Logout</b-nav-item>
+            <b-button size="sm" variant="danger" @click.stop="logout()">Logout</b-button>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -35,10 +35,10 @@
                 <p>{{ item.message }}</p>
               </div>
               <div v-else-if="item.color === 1">
-                <p class="font-weight-bold text-monospace" text-variant="success">{{ item.message }}</p>
+                <p class="font-weight-bold text-monospace text-success">{{ item.message }}</p>
               </div>
               <div v-else-if="item.color === 2">
-                <p class="font-weight-bold font-italic text-monospace" text-variant="danger">{{ item.message }}</p>
+                <p class="font-weight-bold font-italic text-monospace text-danger">{{ item.message }}</p>
               </div>
             </div>
           </div>
@@ -52,10 +52,10 @@
                 <p>{{ item.message }}</p>
               </div>
               <div v-else-if="item.color === 1">
-                <p class="font-weight-bold text-monospace" text-variant="success">{{ item.message }}</p>
+                <p class="font-weight-bold text-monospace text-success">{{ item.message }}</p>
               </div>
               <div v-else-if="item.color === 2">
-                <p class="font-weight-bold font-italic text-monospace" text-variant="danger">{{ item.message }}</p>
+                <p class="font-weight-bold font-italic text-monospace text-danger">{{ item.message }}</p>
               </div>
             </div>
           </div>
@@ -125,7 +125,18 @@ export default {
   },
   methods: {
     logout () {
-      this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, message: this.chat.nickname + ' left this room', color: 2, created_date: new Date() })
+      this.chat.room = this.$route.params.id
+      this.chat.nickname = this.$route.params.nickname
+      this.chat.message = this.chat.nickname + ' left the room'
+      this.chat.color = 2
+      axios.post(`http://localhost:3000/api/chat`, this.chat)
+        .then(response => {
+          this.socket.emit('save-message', { room: this.chat.room, nickname: this.chat.nickname, message: this.chat.nickname + ' left this room', color: 2, created_date: new Date() })
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+
       this.$router.push({
         name: 'RoomList'
       })
