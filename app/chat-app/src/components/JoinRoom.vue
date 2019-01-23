@@ -49,7 +49,17 @@ export default {
   data () {
     return {
       chat: {},
-      socket: io('http://localhost:4000')
+      socket: io('http://localhost:4000'),
+      items: [{
+        text: 'Chat room list',
+        href: '#/',
+        active: false
+      },
+      {
+        text: 'Join room',
+        href: '#/',
+        active: true
+      }]
     }
   },
   methods: {

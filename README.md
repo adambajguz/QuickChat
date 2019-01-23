@@ -1,4 +1,4 @@
-# ToDoList
+﻿# ToDoList
 
 Celem projektu jest stworzenie aplikacji typu SPA (single page application). Backend stanowi serwer RESTowy, udostępniający dane w postaci JSON (można wykorzystać json-server). Klient działający w przeglądarce komunikuje się z nim przy pomocy AJAX. Dozwolone (a nawet zalecane) jest korzystanie z javascriptowych bibliotek i frameworków (np. Angular, React, Vue, Bakcbone, Knockout, Ember).
 
@@ -8,7 +8,7 @@ Aplikacja powinna pozwalać na przeglądanie, dodawanie, usuwanie oraz edycję d
 2. =>(+1) - przynajmniej dwie tabele połączone relacją jeden-do-wielu (np. autor-książki, rejon-pracownicy, zamówienie-produkty)
 3. (dodatkowo +1) - jeśli w powyższym wystąpi relacja wiele-do-wielu (np. książka może mieć wielu autorów, pracownik może być przypisany do wielu rejonów)
 4. => (+1) - użytkownik ma możliwość sortowania (wg. dwóch czy trzech kryteriów)5. 
-5. (+1) - użytkownik ma możliwość wyszukiwania/filtrowania danych (np. "pokaż książki o tytule zaczynajacym się od ...", "pokaż wszystkie książki danego autora")
+5. =>(+1) - użytkownik ma możliwość wyszukiwania/filtrowania danych (np. "pokaż książki o tytule zaczynajacym się od ...", "pokaż wszystkie książki danego autora")
 6. =>(+1) - zaimplementowano poprawnie działający routing po stronie klienta
 7. =>(+1) - bardziej złożona niż sam CRUD logika, pasująca do tematu projektu
 8. =>(+1) - wysoki user experience (wygoda, atrakcyjność, obecność grafik i animacji, responsywność)
